@@ -6,8 +6,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.nio.file.DirectoryIteratorException;
 import  java.nio.file.Files;
 import java.io.File;
+import java.security.PublicKey;
 
 public class HelloController {
     @FXML
@@ -31,9 +33,10 @@ public class HelloController {
         treeView.setShowRoot(false);
     }
 
+
     public void Select(){
         try{
-            TreeItem<File> item = treeView.getSelectionModel().getSelectedItem();
+            TreeItem<File> item = treeView.getSelectionModel().getSelectedItem(); // Đối tượng được select
             File tmp = item.getValue();
             if(item.isLeaf()){
                 if(!tmp.isFile()){
@@ -58,10 +61,25 @@ public class HelloController {
         }
 
     }
-    
-    public void search() {
-        String text = input.getText();
+    public  void handleGetFile(File disk){
+        File[] listFiles = disk.listFiles();
+        for(File file:listFiles){
+            if(file.isFile()){
+                listView.getItems().add(file.getPath());
+            }
+            else{
+                handleGetFile(file);
+            }
+        }
+    }
 
-        listView.getItems().add(text);
+    public void search() {
+//        String text = input.getText();
+
+        File[] disks = File.listRoots();
+        for(File disk:disks){
+                handleGetFile(disk);
+        }
+
     }
 }
