@@ -61,22 +61,8 @@ public class HelloController {
         }
 
     }
-//    public  void handleGetFile(File disk){
-//        File[] listFiles = disk.listFiles();
-//        for(File file:listFiles){
-//            String dirLocation = file.getPath() ;
-//
-//            if(file.isFile()){
-//                if(file.getName() == input.getText()) {
-//                    listView.getItems().add(file.getPath());
-//                }
-//            }
-//            else{
-//                handleGetFile(file);
-//            }
-//        }
-//    }
-    void handleGetFile(File[] arr)
+
+    public void handleGetFile(File[] arr)
     {
 
         for (File f : arr) {
