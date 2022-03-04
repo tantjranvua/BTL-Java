@@ -11,7 +11,7 @@ import java.io.File;
 
 public class HelloController {
     @FXML
-    private ListView<File> listView;
+    private ListView<String> listView;
     @FXML
     private TreeView<File> treeView;
     @FXML
@@ -58,11 +58,10 @@ public class HelloController {
         }
 
     }
-
-
+    
     public void search() {
-        File text = input.getText();
-        
+        String text = input.getText();
+
         listView.getItems().add(text);
     }
 }
