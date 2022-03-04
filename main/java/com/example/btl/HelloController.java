@@ -61,24 +61,48 @@ public class HelloController {
         }
 
     }
-    public  void handleGetFile(File disk){
-        File[] listFiles = disk.listFiles();
-        for(File file:listFiles){
-            if(file.isFile()){
-                listView.getItems().add(file.getPath());
+//    public  void handleGetFile(File disk){
+//        File[] listFiles = disk.listFiles();
+//        for(File file:listFiles){
+//            String dirLocation = file.getPath() ;
+//
+//            if(file.isFile()){
+//                if(file.getName() == input.getText()) {
+//                    listView.getItems().add(file.getPath());
+//                }
+//            }
+//            else{
+//                handleGetFile(file);
+//            }
+//        }
+//    }
+    void handleGetFile(File[] arr)
+    {
+
+        for (File f : arr) {
+
+            if (f.isFile())
+                listView.getItems().add(f.getName());
+
+            else if (f.isDirectory() ) {
+                listView.getItems().add (f.getName() );
+
+                handleGetFile(f.listFiles());
             }
-            else{
-                handleGetFile(file);
-            }
+
         }
     }
 
     public void search() {
-//        String text = input.getText();
+        String inputText = input.getText();
+        try {
 
-        File[] disks = File.listRoots();
-        for(File disk:disks){
-                handleGetFile(disk);
+            File[] disks = File.listRoots();
+            handleGetFile(disks);
+
+        }
+        catch(Exception ex){
+            System.out.println(ex);
         }
 
     }
