@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.btl.HelloController">
+   <children>
+      <Pane>
+         <children>
+            <Button fx:id="button_delete" layoutX="67.0" mnemonicParsing="false" onMouseClicked="#deleteFile" prefHeight="30.0" prefWidth="60.0" text="Delete" />
+            <Button fx:id="button_new" layoutX="135.0" mnemonicParsing="false" onMouseClicked="#newFile" prefHeight="30.0" prefWidth="60.0" text="New" />
+            <TextField fx:id="input_new" layoutX="200.0" prefHeight="30.0" prefWidth="150.0" promptText="Name folder" />
+            <TreeView fx:id="treeView" layoutY="31.0" onContextMenuRequested="#Select" onMouseClicked="#Select" prefHeight="400.0" prefWidth="350.0" />
+            <Button id="bt1" fx:id="bt1" mnemonicParsing="false" onAction="#InitTreeView" prefHeight="30.0" prefWidth="60.0" text="Restart" />
+         </children>
+      </Pane>
+      <Pane layoutX="350.0">
+         <children>
+            <ListView fx:id="listView" layoutY="31.0" prefHeight="400.0" prefWidth="460.0" />
+            <TextField fx:id="input_search" layoutX="247.0" prefHeight="30.0" prefWidth="150.0" promptText="Search" />
+            <Button fx:id="button_search" layoutX="400.0" minWidth="53.0" mnemonicParsing="false" onMouseClicked="#search" prefHeight="30.0" prefWidth="60.0" text="Search" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
